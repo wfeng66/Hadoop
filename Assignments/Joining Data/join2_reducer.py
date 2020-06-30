@@ -8,15 +8,15 @@ prev_value = ""
 
 for line in sys.stdin:
     line       = line.strip()       #strip out carriage return
-    key_curr_value  = line.split('\t')   #split line, into key and curr_value, returns a list   
+    key_value  = line.split('\t')   #split line, into key and curr_value, returns a list   
 
-    curr_show  = key_curr_value[0]       #key is first item in list, indexed by 0
-    curr_value   = key_curr_value[1]          #curr_value is 2nd item
+    curr_show  = key_value[0]       #key is first item in list, indexed by 0
+    curr_value   = key_value[1]          #curr_value is 2nd item
     
     if(prev_show!=curr_show):
         if(prev_value[:3]=='ABC'):
             total_vws = sum(list(map(int, show_cnts_to_output)))  #count the sum of the list
-            print('{0} {1}'.format(curr_show, total_vws))
+            print('{0} {1}'.format(prev_show, total_vws))
         show_cnts_to_output=[]      #reset the list for new show
         show_cnts_to_output.append(curr_value)   #push the value to the list for sum later
     else:
